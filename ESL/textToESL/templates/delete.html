@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block styles %}
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/dictionary.css')}}" rel="stylesheet">
+{% endblock styles %}
+{% block content %}
+<div class="dict_container" style="margin-top: 110px;">
+  <h1>Delete "{{ word.word }}"</h1>
+  <p>Are you sure you want to delete the word "{{ word.word }}" from the dictionary?</p>
+  <form action="{{ url_for('main.delete_word', word_id=word.id) }}" method="post">
+    {{ form.hidden_tag() }}
+    <button type="submit" class="delete-confirm-btn">Yes, Delete</button>
+    <a href="{{ url_for('main.dictionary') }}" class="delete-cancel-btn">Cancel</a>
+  </form>
+</div>
+{% endblock content %}

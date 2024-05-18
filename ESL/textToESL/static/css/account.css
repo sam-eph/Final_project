@@ -1,0 +1,84 @@
+/* Main content styles */
+.profile-content {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 100px;
+  }
+
+  /* Media styles for profile image and info */
+  .profile-media {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  /* Profile image styles */
+  .profile-image {
+    width: 120px; /* Smaller profile image */
+    height: 120px; /* Smaller profile image */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #fff; /* Thinner border */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Heading and secondary text styles */
+  .profile-heading {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .profile-text-secondary {
+    color: #b0bec5;
+  }
+
+  /* Form and input styles */
+  .profile-form-group {
+    margin-bottom: 15px;
+  }
+  .profile-form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .profile-form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .profile-form-control-file {
+    border: none;
+  }
+
+  /* Button styles */
+  .profile-btn {
+    padding: 10px 15px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .profile-btn:hover {
+    background-color: #1391a8;
+  }
+
+  /* Utility classes */
+  .profile-border-bottom {
+    border-bottom: 1px solid #eee;
+  }
+  .profile-mb-4 {
+    margin-bottom: 1.5rem;
+  }

@@ -1,0 +1,91 @@
+  .translator-container {
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .translator-header {
+    background-color: #5c6bc0;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .translator-select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #c5cae9;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .translation-area {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .input-section, .output-section {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .translator-textarea, .output-text {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #c5cae9;
+    border-radius: 5px;
+    resize: vertical;
+    height: 200px;
+  }
+  .translator-button {
+    background-color: #3f51b5;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .translator-button:hover {
+    background-color: #3949ab;
+  }
+  .camera-display, .output-text {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .camera-display video {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .control-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sign-box {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    background-color: #c5cae9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+    border: 3px solid #3f51b5; /* Border around the sign box */
+  }

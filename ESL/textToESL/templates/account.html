@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/account.css')}}" />
+{% endblock styles%}
+<div class="profile-content">
+    <div class="profile-media">
+        <img class="profile-image rounded-circle account-img" src="{{ image_file }}" alt="Profile Image">
+        <div class="media-body">
+            <h2 class="profile-heading account-heading">{{ current_user.username }}</h2>
+            <p class="profile-text-secondary text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="profile-form-group form-group">
+            <legend class="profile-border-bottom profile-mb-4 border-bottom mb-4">Account Info</legend>
+            <div class="profile-form-group form-group">
+                {{ form.username.label(class="profile-form-label ") }}
+
+                {% if form.username.errors %}
+                    {{ form.username(class="profile-form-control is-invalid") }}
+                    <div class="profile-invalid-feedback invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="profile-form-control  ") }}
+                {% endif %}
+            </div>
+            <div class="profile-form-group form-group">
+                {{ form.email.label(class="profile-form-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="profile-form-control is-invalid") }}
+                    <div class="profile-invalid-feedback invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="profile-form-control") }}
+                {% endif %}
+            </div>
+            <div class="profile-form-group form-group">
+                {{ form.picture.label(class="profile-form-label") }}
+                {{ form.picture(class="profile-form-control-file") }}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="profile-form-group form-group">
+            {{ form.submit(class="profile-btn") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
