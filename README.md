@@ -1,2 +1,2 @@
 # final_project
-This it sign language translator
+This is sign language translator project
