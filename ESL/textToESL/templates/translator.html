@@ -1,37 +1,35 @@
-{% extends 'layout.html'%}
+{% extends 'layout.html' %}
 {% block content %}
 {% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/translator.css') }}">
+<link href="{{ url_for('static', filename='css/translator.css') }}" rel="stylesheet">
 {% endblock styles %}
-  <div class="translator-container">
+<div class="translator-container">
     <div class="translator-header">
-      <h1>Sign Language Translator</h1>
+        <h1>Sign Language Translator</h1>
     </div>
     <select id="translationSelect" class="translator-select">
-      <option value="textToSign">Text to Sign</option>
-      <option value="signToText">Sign to Text</option>
+        <option value="textToSign">Text to Sign</option>
+        <option value="signToText">Sign to Text</option>
     </select>
     <div class="translation-area">
-      <div id="textToSign" class="input-section">
-        <textarea id="textInput" class="translator-textarea" placeholder="Enter text here..."></textarea>
-        <button id="translateToSignBtn" class="translator-button">Translate to Sign</button>
-      </div>
-      <div id="signOutput" class="output-section output-area">
-        <div class="sign-box">Sign will appear here</div>
-      </div>
-      <div id="signToText" class="input-section" style="display: none;">
-        <div class="camera-display">
-          <video id="camera" autoplay></video>
+        <div id="textToSign" class="input-section">
+            <textarea id="textInput" class="translator-textarea" placeholder="Enter text here..."></textarea>
+            <button id="translateToSignBtn" class="translator-button">Translate to Sign</button>
         </div>
-        <div class="control-buttons">
-          <button id="startCameraBtn" class="translator-button">Start Camera</button>
-          <button id="stopCameraBtn" class="translator-button">Stop Camera</button>
-          <button id="captureBtn" class="translator-button">Capture and Translate</button>
+        <div id="signOutput" class="output-section output-area">
+            <div class="sign-box">Sign will appear here</div>
         </div>
-      </div>
-      <div id="signTextOutput" class="output-section output-text" style="display: none;">
-      </div>
+        <div id="signToText" class="input-section" style="display: none;">
+            <div class="camera-display">
+                <video id="camera" autoplay></video>
+            </div>
+            <div class="control-buttons">
+                <button id="startCameraBtn" class="translator-button">Start Camera</button>
+                <button id="stopCameraBtn" class="translator-button">Stop Camera</button>
+                <button id="captureBtn" class="translator-button">Capture and Translate</button>
+            </div>
+        </div>
+        <div id="signTextOutput" class="output-section output-text" style="display: none;"></div>
     </div>
-  </div>
-{% endblock content %}
-  
+</div>
+{% endblock %}
