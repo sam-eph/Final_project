@@ -1,0 +1,89 @@
+{% extends 'admin_layout.html' %}
+
+{% block content %}
+<main>
+    <div class="page-content">
+        <div class="analytics">
+            <div class="card">
+                <div class="card-head">
+                    <h2>{{ total_customers }}</h2>  
+                    <span class="las la-user-friends"></span>
+                </div>
+                <div class="card-progress">
+                    <small>Users</small>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <h2>{{ total_words }}</h2>
+                    <span class="las la-file-alt"></span>
+                </div>
+                <div class="card-progress">
+                    <small>Total Words</small>
+                    <div class="card-indicator">
+                        <div class="indicator two" style="width: 80%"></div> <!-- Static value -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <h2>{{ total_emails }}</h2>  <!-- Dynamic email count -->
+                    <span class="las la-envelope"></span>
+                </div>
+                <div class="card-progress">
+                    <small>New E-mails received</small>
+                    <div class="card-indicator">
+                        <div class="indicator four" style="width: 90%"></div> <!-- Static value -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="records table-responsive">
+            <div class="record-header">
+                <div class="add"> 
+                    <span>Recent 3 messages</span>
+                </div>
+            </div>
+
+            <div>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><span></span> CLIENT</th>
+                            <th><span></span> MESSAGE</th>
+                            <th><span></span> DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in latest_messages %}
+                        <tr>
+                            <td>#{{ message.id }}</td>
+                            <td style="width: 30%;">
+                                <div class="client">
+                                    {% set image_file = url_for('static', filename='profile_pics/' ~ message.user.image_file) %}
+                                    <img src="{{ image_file }}" alt="Client Image" class="client-img" >
+                                    <div class="client-info">
+                                        <h4>{{ message.user.username }}</h4>
+                                        <small>{{ message.user.email }}</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="message-column" title="{{ message.message }}">
+                                {{ message.message }}
+                            </td>
+                            <td>
+                                {{ message.timestamp.strftime('%d %B, %Y') }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

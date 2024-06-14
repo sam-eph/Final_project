@@ -1,0 +1,156 @@
+/* Custom CSS for the registration page */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main .register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 95px;
+}
+
+main .register-card {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 30px;
+  width: 800px;
+}
+
+.register-card {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-left-column,
+.register-right-column {
+  width: 45%;
+}
+
+.register-label-float input {
+  width: 100%;
+  padding: 5px;
+  display: inline-block;
+  border: 0;
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+  outline: 0;
+  transition: 0.1s linear;
+  min-width: 180px;
+  font-size: 16px;
+}
+
+.register-label-float {
+  position: relative;
+  padding-top: 15px;
+  margin-top: 2%;
+  margin-bottom: 7%;
+}
+
+.register-label-float label {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  transition: 0.3s ease-out;
+  color: #3e033f;
+}
+
+.register-label-float .input {
+  color: #3e033f;
+}
+
+.register-card .register-label-float input:focus + label,
+.register-card .register-label-float input:valid + label {
+  top: 0px;
+  font-size: 10pt;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12pt;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+input[type="submit"]:hover {
+  color: #fff;
+}
+
+.register-justify {
+  display: flex;
+  justify-content: center;
+}
+
+.register-card h1 {
+  color: #0d014d;
+}
+
+label,
+input {
+  color: #000;
+}
+
+.register-card {
+  position: relative;
+}
+
+.register-card .register-label-float input {
+  border-bottom: 2px solid #0d014d;
+}
+
+.register-card .register-label-float input:focus {
+  border-color: #231285;
+}
+
+input[type="submit"] {
+  color: #0d014d;
+  border: 1px solid #0d014d;
+}
+
+input[type="submit"]:hover {
+  background-color: #0d014d;
+}
+
+.register-label-float img:hover {
+  background-color: #871a71;
+}
+
+.register-sep p {
+  color: black;
+}
+
+.register-sep a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-sep {
+  margin-top: 10%;
+  text-align: center;
+}

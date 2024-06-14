@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/about.css')}}" />
+{% endblock styles %}
+
+<div id="about" class="about-us section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                <div class="section-heading">
+                    <h6>About Us</h6>
+                    <h2>Learn More About <span>Our Mission</span> and <em>Technology</em></h2>
+                </div>
+                <div class="about-content">
+                    <p>Welcome to [Company Name], where we are committed to bridging the communication gap between the hearing and the Deaf communities. Our state-of-the-art text-to-sign language translator leverages a rule-based approach to provide accurate and reliable translations, making communication more accessible for everyone.</p>
+                    <p>Our dedicated team of linguists, developers, and accessibility advocates work tirelessly to ensure that our platform is user-friendly, accurate, and continuously improving. We believe in the power of technology to create inclusive solutions that benefit society as a whole.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mission-section">
+            <div class="col-lg-12">
+                <div class="mission">
+                    <h3>Our Mission</h3>
+                    <p>To enhance communication between the hearing and Deaf communities by providing an innovative, accurate, and user-friendly text-to-sign language translation platform. We strive to promote inclusivity, accessibility, and understanding through technology.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row team-section">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h6>Our Team</h6>
+                    <h2>Meet <span>Our Experts</span></h2>
+                </div>
+            </div>
+            <div class="col-lg-4 team-member">
+                <div class="team-member-card">
+                    <img src="{{url_for('static', filename='img/contact-icon-01.png')}}" alt="Team Member 1">
+                    <h4>John Doe</h4>
+                    <p>CEO & Founder</p>
+                </div>
+            </div>
+            <div class="col-lg-4 team-member">
+                <div class="team-member-card">
+                    <img src="{{url_for('static', filename='img/contact-icon-01.png')}}" alt="Team Member 2">
+                    <h4>Jane Smith</h4>
+                    <p>Chief Technology Officer</p>
+                </div>
+            </div>
+            <div class="col-lg-4 team-member">
+                <div class="team-member-card">
+                    <img src="{{url_for('static', filename='img/bg.jpg')}}" alt="Team Member 3">
+                    <h4>Michael Johnson</h4>
+                    <p>Chief Linguist</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

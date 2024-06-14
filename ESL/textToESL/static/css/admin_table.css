@@ -1,0 +1,466 @@
+/* MAIN */
+main {
+	width: 100%;
+	padding: 24px 20px 20px 20px;
+}
+/* newly added */
+
+.page-content {
+    padding: 1.3rem 1rem;
+    background: #f1f4f9;
+}
+
+/* Grid layout for analytics cards */
+.analytics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+}
+
+/* Card styling */
+.card {
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    background: #fff;
+    padding: 1rem;
+    border-radius: 3px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Animation for card appearance */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 15px -5px rgb(0 0 0 / 20%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-head h2 {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.card-head span {
+    font-size: 3.2rem;
+    color: var(--text-grey);
+}
+
+.card-progress small {
+    color: #777;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+/* Records table styling */
+.records {
+    box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.record-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+}
+
+.add span {
+    display: inline-block;
+    margin-right: .6rem;
+    font-size: .9rem;
+    color: #666;
+}
+
+input, button, select {
+    outline: none;
+}
+
+/* Message column styling for text overflow */
+.message-column {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px; /* Adjust the padding as needed */
+}
+
+/* Responsive table container */
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+}
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table thead tr {
+    background: #e9edf2;
+}
+
+table thead th {
+    padding: 0.75rem;
+    text-align: left;
+    color: #444;
+    font-size: 0.875rem;
+}
+
+table thead th:first-child {
+    padding-left: 1rem;
+}
+
+table tbody td {
+    padding: 0.75rem;
+    color: #444;
+}
+
+table tbody td:first-child {
+    padding-left: 1rem;
+    color: var(--main-color);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dee2e8;
+}
+
+/* Client info styling */
+.client {
+    display: flex;
+    align-items: center;
+}
+
+.client-img {
+    margin-right: .5rem;
+    border: 2px solid #b0b0b0;
+    height: 45px;
+    width: 45px;
+}
+
+.client-info h4 {
+    color: #555;
+    font-size: .95rem;
+}
+
+.client-info small {
+    color: #777;
+}
+
+/* Action icons styling */
+.actions span {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: .5rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media only screen and (max-width: 1200px) {
+    .analytics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .analytics {
+        grid-template-columns: 100%;
+    }
+    
+    .sidebar {
+        left: -165px;
+        z-index: 90;
+    }
+    
+    header {
+        left: 0;
+        width: 100%;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    #menu-toggle:checked ~ .sidebar {
+        left: 0;
+    }
+    
+    #menu-toggle:checked ~ .sidebar {
+        width: 165px;
+    }
+
+    #menu-toggle:checked ~ .sidebar .side-header span {
+        display: inline-block;
+    }
+
+    #menu-toggle:checked ~ .sidebar .profile,
+    #menu-toggle:checked ~ .sidebar .side-menu a small {
+        display: block;
+    }
+
+    #menu-toggle:checked ~ .sidebar .side-menu a span {
+        font-size: 1.7rem;
+    }
+    
+    #menu-toggle:checked ~ .main-content header {
+        left: 0px;
+    }
+    
+    table {
+        width: 900px;
+    }
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.25rem 0.5rem; /* Smaller padding */
+    font-size: 0.875rem; /* Smaller font size */
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.5);
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.5);
+}
+
+.delete-button {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.delete-button:focus, .delete-button.focus {
+    box-shadow: 0 0 0 0.2rem rgba(225,83,97,0.5);
+}
+
+.delete-button:disabled, .delete-button.disabled {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.delete-button:not(:disabled):not(.disabled):active, .delete-button:not(:disabled):not(.disabled).active,
+.show > .delete-button.dropdown-toggle {
+    background-color: #bd2130;
+    border-color: #b21f2d;
+}
+
+.delete-button:not(:disabled):not(.disabled):active:focus, .delete-button:not(:disabled):not(.disabled).active:focus,
+.show > .delete-button.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(225,83,97,0.5);
+}
+
+/* Form select styling */
+.form-select {
+    display: inline-block;
+    width: auto;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-select-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.form-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* Adjusted table styling */
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table thead tr {
+    background: #e9edf2;
+}
+
+table thead th {
+    padding: 0.75rem;
+    text-align: left;
+    color: #444;
+    font-size: 0.875rem;
+}
+
+table thead th:first-child {
+    padding-left: 1rem;
+}
+
+table tbody td {
+    padding: 0.75rem;
+    color: #444;
+}
+
+table tbody td:first-child {
+    padding-left: 1rem;
+    color: var(--main-color);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dee2e8;
+}
+
+/* search and pagination*/
+/* Pagination */
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	list-style: none;
+	position: fixed;
+	bottom: 3px;
+}
+
+.pagination a,
+.pagination span {
+	display: block;
+	padding: 0.25rem 0.5rem;
+	margin: 0 0.25rem;
+	text-decoration: none;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 0.25rem;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.pagination .active {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
+	cursor: default;
+}
+
+.pagination .disabled {
+	color: #6c757d;
+	pointer-events: none;
+	background-color: #fff;
+	border-color: #dee2e6;
+}
+
+.pagination span.ellipsis {
+	border: none;
+	background-color: transparent;
+}
+
+/* search bar */
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #8ad7d7;
+    color: #1c1b1b;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group .icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.form-group .icon:hover {
+    color: #007bff;
+}

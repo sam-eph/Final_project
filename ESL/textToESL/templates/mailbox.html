@@ -1,0 +1,66 @@
+{% extends 'admin_layout.html' %}
+
+{% block content %}
+<main>
+<div class="records table-responsive">
+<div>
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>CLIENT</th>
+                <th>MESSAGE</th>
+                <th>DATE</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages.items %}
+            <tr>
+                <td>#{{ message.id }}</td>
+                <td style="width: 30%;">
+                    <div class="client">
+                        {% set image_file = url_for('static', filename='profile_pics/' ~ message.user.image_file) %}
+                        <img src="{{ image_file }}" alt="{{ message.user.username }}" class="client-img">
+                        <div class="client-info">
+                            <h4>{{ message.user.username }}</h4>
+                            <small>{{ message.user.email }}</small>
+                        </div>
+                    </div>
+                </td>
+                <td class="message-column" title="{{ message.message }}">
+                    {{ message.message }}
+                </td>
+                <td>
+                    {{ message.timestamp.strftime('%d %B, %Y') }}
+                </td>
+                <td>
+                    <form method="post" action="{{ url_for('admin.delete_message', message_id=message.id) }}" style="display:inline;">
+                        {{ form.hidden_tag() }}
+                        <button type="submit" class="btn btn-danger delete-button" onclick="return confirm('Are you sure you want to delete this message?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+
+</div>
+</div>
+
+<div class="pagination">
+    {% for page_num in messages.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
+        {% if page_num %}
+            {% if messages.page == page_num %}
+                <span class="active">{{ page_num }}</span>
+            {% else %}
+                <a href="{{ url_for('admin.mailbox', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            <span class="ellipsis">...</span>
+        {% endif %}
+    {% endfor %}
+</div>
+</main>
+
+{% endblock content %}

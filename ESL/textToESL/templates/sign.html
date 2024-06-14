@@ -1,0 +1,41 @@
+{% if current_user.is_authenticated and current_user.is_admin %}
+  {% extends 'admin_layout.html' %}
+{% else %}
+  {% extends 'layout.html' %}
+{% endif %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="{{url_for('static', filename='css/sign.css')}}" rel="stylesheet">
+{% if current_user.is_admin %}
+  <div class="sign_container" style="margin-top: 40px;">
+{% else %}
+  <div class="sign_container" style="margin-top: 100px;">
+{% endif %}
+  <h1>{{ title }} - Sign Language</h1>
+  <video id="signVideo" controls autoplay>
+    <source src="{{video_file }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video_controls">
+    <button onclick="playVideo()">Play</button>
+    <button onclick="pauseVideo()">Pause</button>
+    <button onclick="restartVideo()">Restart</button>
+  </div>
+</div>
+<script>
+  function playVideo() {
+    document.getElementById('signVideo').play();
+  }
+
+  function pauseVideo() {
+    document.getElementById('signVideo').pause();
+  }
+
+  function restartVideo() {
+    var video = document.getElementById('signVideo');
+    video.currentTime = 0;
+    video.play();
+  }
+</script>
+{% endblock content %}

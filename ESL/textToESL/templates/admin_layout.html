@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/admin_.css')}}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/admin_table.css') }}">
+	<title>AdminSite</title>
+</head>
+<body>
+	
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-smile icon'></i> Tegbabu</a>
+		<ul class="side-menu">
+			<li><a href="{{ url_for('admin.admin_home') }}" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<!-- <li class="divider" data-text="main">Main</li> -->
+			<li>
+				<a href="#"><i class='bx bxs-group icon'></i> Customers <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="{{ url_for('admin.customers')}}">Customers</a></li>
+					<li><a href="{{ url_for('admin.mailbox')}}">Mailbox</a></li>
+				</ul>
+			</li>
+			<li><a href="{{ url_for('users.account') }}"><i class='bx bxs-user-account icon'></i> Profile</a></li>
+			<!-- <li><a href="#"><i class='bx bxs-widget icon' ></i> Widgets</a></li>
+			<li class="divider" data-text="table and forms">Table and forms</li>
+			<li><a href="#"><i class='bx bx-table icon' ></i> Tables</a></li> -->
+			<li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> Dictionary <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+                    <li><a href="{{ url_for('main.dictionary') }}">Dictionary</a></li>
+					<li><a href="{{ url_for('admin.add_word') }}">Add new word</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<a href="{{ url_for('users.logout') }}" class="logout">
+			<i class='bx bxs-log-out-circle'></i>
+			<span class="text">Logout</span>
+		</a>
+		
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar' ></i>
+			
+			<a href="{{url_for('admin.mailbox')}}" class="nav-link">
+				<i class='bx bxs-message-square-dots icon' ></i>
+				<span class="badge">{{total_emails}}</span>
+			</a>
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="{{ image_file }}" alt="">
+				<ul class="profile-link">
+					<li><a href="{{ url_for('users.account') }}"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
+					<li><a href="{{url_for('users.logout')}}"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <small class="alert alert-{{ category }}" style="top: 68px; left: 50px;">
+                    {{ message }}
+                </small>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script >
+        // SIDEBAR DROPDOWN
+const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
+const sidebar = document.getElementById('sidebar');
+
+allDropdown.forEach(item=> {
+	const a = item.parentElement.querySelector('a:first-child');
+	a.addEventListener('click', function (e) {
+		e.preventDefault();
+
+		if(!this.classList.contains('active')) {
+			allDropdown.forEach(i=> {
+				const aLink = i.parentElement.querySelector('a:first-child');
+
+				aLink.classList.remove('active');
+				i.classList.remove('show');
+			})
+		}
+
+		this.classList.toggle('active');
+		item.classList.toggle('show');
+	})
+})
+
+// SIDEBAR COLLAPSE
+const toggleSidebar = document.querySelector('nav .toggle-sidebar');
+const allSideDivider = document.querySelectorAll('#sidebar .divider');
+
+if(sidebar.classList.contains('hide')) {
+	allSideDivider.forEach(item=> {
+		item.textContent = '-'
+	})
+	allDropdown.forEach(item=> {
+		const a = item.parentElement.querySelector('a:first-child');
+		a.classList.remove('active');
+		item.classList.remove('show');
+	})
+} else {
+	allSideDivider.forEach(item=> {
+		item.textContent = item.dataset.text;
+	})
+}
+
+toggleSidebar.addEventListener('click', function () {
+	sidebar.classList.toggle('hide');
+
+	if(sidebar.classList.contains('hide')) {
+		allSideDivider.forEach(item=> {
+			item.textContent = '-'
+		})
+
+		allDropdown.forEach(item=> {
+			const a = item.parentElement.querySelector('a:first-child');
+			a.classList.remove('active');
+			item.classList.remove('show');
+		})
+	} else {
+		allSideDivider.forEach(item=> {
+			item.textContent = item.dataset.text;
+		})
+	}
+})
+
+
+
+
+sidebar.addEventListener('mouseleave', function () {
+	if(this.classList.contains('hide')) {
+		allDropdown.forEach(item=> {
+			const a = item.parentElement.querySelector('a:first-child');
+			a.classList.remove('active');
+			item.classList.remove('show');
+		})
+		allSideDivider.forEach(item=> {
+			item.textContent = '-'
+		})
+	}
+})
+
+
+
+sidebar.addEventListener('mouseenter', function () {
+	if(this.classList.contains('hide')) {
+		allDropdown.forEach(item=> {
+			const a = item.parentElement.querySelector('a:first-child');
+			a.classList.remove('active');
+			item.classList.remove('show');
+		})
+		allSideDivider.forEach(item=> {
+			item.textContent = item.dataset.text;
+		})
+	}
+})
+
+
+
+
+// PROFILE DROPDOWN
+const profile = document.querySelector('nav .profile');
+const imgProfile = profile.querySelector('img');
+const dropdownProfile = profile.querySelector('.profile-link');
+
+imgProfile.addEventListener('click', function () {
+	dropdownProfile.classList.toggle('show');
+})
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% block styles %}
+<link href="{{ url_for('static', filename='css/translator.css') }}" rel="stylesheet">
+{% endblock styles %}
+<div class="translator-container">
+    <div class="translator-header">
+        <h1>Sign Language Translator</h1>
+    </div>
+    <div class="translation-area">
+        <div id="textToSign" class="input-section">
+            <textarea id="textInput" class="translator-textarea" placeholder="Enter text here..."></textarea>
+            <button id="translateToSignBtn" class="translator-button">Translate to Sign</button>
+        </div>
+        <div id="signOutput" class="output-section output-area">
+            <div class="sign-box">Sign will appear here</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

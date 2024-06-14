@@ -1,0 +1,167 @@
+/* Basic Reset */
+.section {
+    padding: 60px 0;
+    background-color: #fff; /* White background */
+    margin-top: 50px;
+  }
+  
+  .container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  
+  .col-lg-12, .col-lg-4 {
+    padding: 0 15px;
+  }
+  
+  .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .col-lg-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  
+  /* Section Heading */
+  .section-heading h6 {
+    color: #27a8c5;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  
+  .section-heading h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    /* font-family: "Raleway", sans-serif; */
+
+  }
+  
+  .section-heading h2 span {
+    color: #27a8c5;
+    position: relative;
+  }
+  
+  .section-heading h2 em {
+    font-style: normal;
+    color: #27a8c5;
+    position: relative;
+  }
+  
+  /* About Content */
+  .about-content {
+    margin-bottom: 40px;
+  }
+  
+  .about-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+  }
+  
+  /* Mission Section */
+  .mission {
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .mission h3 {
+    font-size: 24px;
+    color: #27a8c5;
+    margin-bottom: 20px;
+  }
+  
+  .mission p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #666;
+  }
+  
+  /* Team Section */
+  .team-section {
+    margin-bottom: 40px;
+  }
+  
+  .team-member {
+    margin-bottom: 30px;
+  }
+  
+  .team-member-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .team-member-card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .team-member-card h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .team-member-card p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .team-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Animations */
+  .wow.fadeInUp {
+    animation-name: fadeInUp;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  [data-wow-duration='0.5s'] {
+    animation-duration: 0.5s;
+  }
+  
+  [data-wow-delay='0.25s'] {
+    animation-delay: 0.25s;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 992px) {
+    .col-lg-12, .col-lg-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  

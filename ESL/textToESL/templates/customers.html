@@ -1,0 +1,94 @@
+{% extends 'admin_layout.html' %}
+
+{% block content %}
+<main>
+    <div class="records table-responsive">
+        <div>
+            <h2>{{ title }}</h2>
+            <form id="search-form" action="{{ url_for('admin.customers') }}" method="get">
+                <div class="form-group">
+                    <input type="text" name="search" id="search-input" placeholder="Search..." value="{{ search_query }}">
+                    <i class='bx bx-search icon' onclick="document.getElementById('search-form').submit();"></i>
+                </div>
+            </form>
+            <table width="100%" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
+                        <th>ROLE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="customers-table-body">
+                    {% for customer in customers.items %}
+                    <tr>
+                        <td>#{{ customer.id }}</td>
+                        <td>{{ customer.username }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>
+                            <form method="post" action="{{ url_for('admin.customers') }}" style="display:inline;">
+                                {{ form.hidden_tag() }}
+                                <input type="hidden" name="user_id" value="{{ customer.id }}">
+                                <select name="role" class="form-select form-select-sm" onchange="confirmRoleChange(this, '{{ customer.username }}')">
+                                    <option value="user" {% if not customer.is_admin %}selected{% endif %}>User</option>
+                                    <option value="admin" {% if customer.is_admin %}selected{% endif %}>Admin</option>
+                                </select>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="{{ url_for('admin.delete_customer', customer_id=customer.id) }}" style="display:inline;">
+                                {{ form.hidden_tag() }}
+                                <button type="submit" class="btn btn-danger delete-button" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="pagination">
+        {% for page_num in customers.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
+            {% if page_num %}
+                {% if customers.page == page_num %}
+                    <span class="active">{{ page_num }}</span>
+                {% else %}
+                    <a href="{{ url_for('admin.customers', page=page_num, search=search_query) }}">{{ page_num }}</a>
+                {% endif %}
+            {% else %}
+                <span class="ellipsis">...</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+</main>
+
+<script>
+    function confirmRoleChange(selectElement, username) {
+        const previousValue = selectElement.dataset.previous;
+        const newValue = selectElement.value;
+
+        const confirmation = confirm(`Are you sure you want to change the role of ${username} to ${newValue === 'admin' ? 'Admin' : 'User'}?`);
+        
+        if (confirmation) {
+            selectElement.form.submit();
+        } else {
+            selectElement.value = previousValue;
+        }
+    }
+
+    document.querySelectorAll('.form-select').forEach(selectElement => {
+        selectElement.dataset.previous = selectElement.value;
+        selectElement.addEventListener('focus', function() {
+            this.dataset.previous = this.value;
+        });
+    });
+
+    document.getElementById('search-input').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('search-form').submit();
+        }
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/contact.css')}}" />
+{% endblock styles %}
+<div id="contact" class="contact-us custom-section">
+    <div class="custom-container">
+      <div class="custom-row">
+        <div class="custom-col-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact-form" action="" method="post">
+            {{ form.hidden_tag() }}
+            <div class="custom-row">
+              <div class="custom-col-6 custom-offset-3">
+                <div class="custom-section-heading">
+                  <h6>Contact Us</h6>
+                  <h2>Fill Out The Form Below To <span>Get</span> In <em>Touch</em> With Us</h2>
+                </div>
+              </div>
+              <div class="custom-col-9">
+                <div class="custom-row">
+                  <div class="custom-col-6">
+                    <fieldset>
+                      {% if form.first_name.errors %}
+                            {{ form.first_name(class="custom-form-control is-invalid") }}
+                            <div class="custom-invalid-feedback invalid-feedback">
+                                {% for error in form.first_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.first_name(id="name", placeholder="First Name", autocomplete="on") }}
+                        {% endif %}
+                    </fieldset>
+                  </div>
+                  <div class="custom-col-6">
+                    <fieldset>
+                      {% if form.last_name.errors %}
+                            {{ form.last_name(class="custom-form-control is-invalid") }}
+                            <div class="custom-invalid-feedback invalid-feedback">
+                                {% for error in form.last_name.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.last_name(id="surname", placeholder="Last Name", autocomplete="on") }}
+                        {% endif %}
+                    </fieldset>
+                  </div>
+                  <div class="custom-col-6">
+                    <fieldset>
+                      {% if form.email.errors %}
+                            {{ form.email(class="custom-form-control is-invalid") }}
+                            <div class="custom-invalid-feedback invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(id="email", placeholder="Your Email") }}
+                        {% endif %}
+                    </fieldset>
+                  </div>
+                  <div class="custom-col-6">
+                    <fieldset>
+                      {% if form.subject.errors %}
+                            {{ form.subject(class="custom-form-control is-invalid") }}
+                            <div class="custom-invalid-feedback invalid-feedback">
+                                {% for error in form.subject.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.subject(id="subject", placeholder="Subject", autocomplete="on") }}
+                        {% endif %}
+                    </fieldset>
+                  </div>
+                  <div class="custom-col-12">
+                    <fieldset>
+                      {% if form.message.errors %}
+                            {{ form.message(class="custom-form-control is-invalid") }}
+                            <div class="custom-invalid-feedback invalid-feedback">
+                                {% for error in form.message.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.message(id="message", placeholder="Message", autocomplete="on", class="custom-form-control custom-textarea") }}
+                        {% endif %}
+                    </fieldset>
+                  </div>
+                  <div class="custom-col-12">
+                    <fieldset>
+                      {{ form.submit(id="form-submit", class="custom-main-button") }}
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-col-3">
+                <div class="custom-contact-info">
+                  <ul>
+                    <li>
+                      <div class="custom-icon">
+                        <img src="{{url_for('static', filename='img/contact-icon-01.png')}}" alt="email icon">
+                      </div>
+                      <a href="#">info@company.com</a>
+                    </li>
+                    <li>
+                      <div class="custom-icon">
+                        <img src="{{url_for('static', filename='img/contact-icon-02.png')}}" alt="phone">
+                      </div>
+                      <a href="#">+001-002-0034</a>
+                    </li>
+                    <li>
+                      <div class="custom-icon">
+                        <img src="{{url_for('static', filename='img/contact-icon-03.png')}}" alt="location">
+                      </div>
+                      <a href="#">26th Street, Digital Villa</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
